@@ -21,8 +21,7 @@ GitHub源码下载地址：https://github.com/Mretron （能够帮上忙，不�
 
 
 
-  
-  > 作者：曾中杰
+ > 作者：曾中杰
 
 ------------
 
@@ -31,7 +30,8 @@ GitHub源码下载地址：https://github.com/Mretron （能够帮上忙，不�
 
 <br>
 <br>
-
+项目地址：www.zengzhongjie.com<br>
+GitHub源码下载地址：https://github.com/Mretron （能够帮上忙，不妨star一下）
 
 #### 背景：
 &nbsp;&nbsp;&nbsp;&nbsp;博主是一名大二软件工程的学生。坚持学习课堂上未曾教授的java以及javaweb相关的知识，乃至学习Spring一系列的框架的过程尤为枯燥。每天看视频学习编程，“copy”视频中的代码运行让我就像是机器一样日复一日地重复着那些操作。而使得我能够坚持下去的兴趣，就是能够在不久的将来完成我自己的项目。也就有了我的个人博客网站。
@@ -132,7 +132,7 @@ GitHub源码下载地址：https://github.com/Mretron （能够帮上忙，不�
 - 后台增删改查自己的信息
 
 ### 1.2功能规划
-![](http://123myblog.oss-cn-beijing.aliyuncs.com/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90.png)]
+![](http://123myblog.oss-cn-beijing.aliyuncs.com/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90.png)
 
 # 2、页面设计与开发
 
