@@ -1,0 +1,7 @@
+spring:
+  thymeleaf:
+    mode: HTML
+  profiles:
+    active: pro
+
+comment.avatar: /images/elyse.png
