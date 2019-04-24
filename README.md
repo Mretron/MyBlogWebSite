@@ -38,7 +38,7 @@ GitHub源码下载地址：https://github.com/Mretron （能够帮上忙，不�
 #### 网站一览：
 ##### 首页
 
-http://123myblog.oss-cn-beijing.aliyuncs.com/%E9%A6%96%E9%A1%B5%E6%88%AA%E5%9B%BE.png
+![首页截图](E:\搭建个人博客\myWorld设计\首页截图.png)
 
 <br>
 
