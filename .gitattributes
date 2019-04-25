@@ -1,4 +1,4 @@
-*. linguist-language=Scala
-*.js linguist-language=Scala
-*.css linguist-language=Scala
-*.html linguist-language=Scala
+*.java linguist-language=java
+*.js linguist-language=js
+*.css linguist-language=css
+*.html linguist-language=html
