@@ -36,7 +36,7 @@ GitHub源码下载地址：https://github.com/Mretron （能够帮上忙，不�
 &nbsp;&nbsp;&nbsp;&nbsp;博主是一名大二软件工程的学生。坚持学习课堂上未曾教授的java以及javaweb相关的知识，乃至学习Spring一系列的框架的过程尤为枯燥。每天看视频学习编程，“copy”视频中的代码运行让我就像是机器一样日复一日地重复着那些操作。而使得我能够坚持下去的兴趣，就是能够在不久的将来完成我自己的项目。也就有了我的个人博客网站。
 #### 网站一览：
 ##### 首页
-![](https://img-blog.csdnimg.cn/20190425170932203.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAzNjY0Nw==,size_16,color_FFFFFF,t_70)
+![](https://github.com/Mretron/MyBlogWebSite/blob/master/picture/%E9%A6%96%E9%A1%B5%E6%88%AA%E5%9B%BE.png)
 
 
 <br>
