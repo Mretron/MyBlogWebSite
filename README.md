@@ -9,8 +9,9 @@
 - 修改了ssl认证文件等java方法
     
 运行忠告：
-- 下载整个项目过后，请首先根据表结构构建相应的数据库表，并且在t_user表中插入一条信息
-    注意：第一次需要自己增加MD5加密过后的密码格式，相应的MD5加密算法在项目中的src/main/java/com.zzj.blog/util/MD5Utils中可以找到
+- 下载整个项目过后，请首先在mysql中创建一个数据库表，然后在程序代码中修改连接信息为你的mysql信息，
+ -运行项目过后，将会自动生成所有的表结构，然后你需要在t_user表中插入一条后台管理员的信息，这里密码需要注意为MD5加密格式
+  注意：第一次需要自己增加MD5加密过后的密码格式，相应的MD5加密算法在项目中的src/main/java/com.zzj.blog/util/MD5Utils中可以找到
 - .修改application的端口号，好让项目在你的电脑环境运行(application-dev.yml开发环境，application-pro.yml生产环境)
 - .通过访问localhost:你的端口号/admin进行访问后台管理，可以进行编辑博客等操作
 - 通过访问localhost:你的端口号 进行访问整个网站的对外首页
