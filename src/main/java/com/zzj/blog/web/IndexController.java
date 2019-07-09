@@ -49,7 +49,7 @@ public class IndexController {
         model.addAttribute("tags",tagService.listTagTop(10));
         model.addAttribute("typesCount",typeService.listType().size());
         model.addAttribute("tagsCount",tagService.listTag().size());
-        model.addAttribute("commentsCount",commentService.listComment().size());
+         //这里是评论总数model.addAttribute("commentsCount",commentService.listComment().size());
         model.addAttribute("bulletins",bulletinService.listBulletin());
         model.addAttribute("messages",messageService.listMessages());
         model.addAttribute("recommends",blogService.listRecommendBlogTop(3));
