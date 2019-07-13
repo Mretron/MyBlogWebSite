@@ -49,46 +49,64 @@
     </nav>
 
     <!--中部主体-->
-    <div class="m-container-small m-padded-tb-big ">
-        <div class="ui  container">
 
-            <div class="ui top attached segment">
+    <div class="ui stackable this container m-container-eight">
 
-                <div class="ui middle aligned two column padded  grid">
-                    <div class="column">
-                        <h3 class="ui teal header">归档</h3>
-                    </div>
-                    <div class="right aligned column">
-                        共<h2 th:text="${page.totalElements}" class="ui m-inline-block orange header ">17</h2>篇博客
-                    </div>
+        <h2 class="ui left aligned header m-padded-left">2019<br> <span  style="font-size: 18px!important; color: gray!important;"><i>方兴未艾：事情朝着好的方向发展并且还未结束。</i></span></h2>
+        <div class="ui stackable tow column grid">
+            <div class="eight wide column " >
+                <div class="ui stackable styled accordion " >
+                    <th:block th:each="item : ${archiveMap1}" th:if="${item.value.size()}!=0">
+                        <div class="title">
+                            <i class="dropdown icon"></i><span th:text="${item.key}" >1</span>&nbsp;&nbsp;&nbsp;&nbsp;下笔<sapn th:text="${item.value.size()}"></sapn>篇
+                        </div>
+                        <div class="content">
+                            <div class="ui fluid vertical  menu" >
+                                <a th:if="${blog.published} == true" th:each="blog : ${item.value}" th:href="@{/blog/{id}(id=${blog.id})}" href="#" target="_blank" class=" item">
+                                <span>
+                                    <i class="mini teal circle icon"></i><span th:text="${blog.title}">关于刻意练习的清单</span>
+                                    <div th:text="${#dates.format(blog.updateTime,'MM-dd')}" class="ui teal basic left pointing label m-padded-mini">9月3日</div>
+                                </span>
+                                    <div th:text="${blog.flag}" class="ui orange basic left pointing label m-padded-mini ">原创</div>
+                                </a>
+                            </div>
+                        </div>
+                    </th:block>
                 </div>
             </div>
+            <div class=" eight wide column">
+                <div class="ui stackable styled accordion ">
+                    <th:block th:each="item : ${archiveMap2}" th:if="${item.value.size()}!=0">
+                        <div class="title">
+                            <i class="dropdown icon"></i><span th:text="${item.key}" >1</span>&nbsp;&nbsp;&nbsp;&nbsp;下笔<sapn th:text="${item.value.size()}"></sapn>篇
+                        </div>
+                        <div class="content">
+                            <div class="ui fluid vertical  menu" >
+                                <a th:if="${blog.published} == true" th:each="blog : ${item.value}" th:href="@{/blog/{id}(id=${blog.id})}" href="#" target="_blank" class=" item">
+                                <span>
+                                    <i class="mini teal circle icon"></i><span th:text="${blog.title}">关于刻意练习的清单</span>
+                                    <div th:text="${#dates.format(blog.updateTime,'MM-dd')}" class="ui teal basic left pointing label m-padded-mini">9月3日</div>
+                                </span>
+                                    <div th:text="${blog.flag}" class="ui orange basic left pointing label m-padded-mini ">原创</div>
+                                </a>
+                            </div>
+                        </div>
+                    </th:block>
 
-
-        <th:block th:each="item : ${archiveMap}">
-
-            <h3 th:text="${item.key}" class="ui center aligned header">2017</h3>
-            <div class="ui fluid vertical  menu" >
-                <a th:if="${blog.published} == true" th:each="blog : ${item.value}" th:href="@{/blog/{id}(id=${blog.id})}" href="#" target="_blank" class=" item">
-                    <span>
-                        <i class="mini teal circle icon"></i><span th:text="${blog.title}">关于刻意练习的清单</span>
-                        <div th:text="${#dates.format(blog.updateTime,'MM-dd')}" class="ui teal basic left pointing label m-padded-mini">9月3日</div>
-                    </span>
-                    <div th:text="${blog.flag}" class="ui orange basic left pointing label m-padded-mini ">原创</div>
-                </a>
-
+                </div>
             </div>
-
-
-
-        </th:block>
-
-
-
-
-
         </div>
-    </div>
+
+
+
+
+
+
+
+
+     </div>
+
+
     <br><br><br>
 
     <!--底部footer栏-->
@@ -156,7 +174,9 @@
             on : 'click',
             position: 'bottom center'
         });
-
+        $('.ui.accordion')
+            .accordion()
+        ;
     </script>
 </body>
 </html>

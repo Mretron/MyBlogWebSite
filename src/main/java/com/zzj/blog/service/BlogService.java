@@ -29,8 +29,8 @@ public interface BlogService {
 
     Map<String,List<Blog>> archiveBlog();
 
-
-
     List<Blog> listRecommendBlogTop(Integer size);
+
+    Map<String,List<Blog>> archiveBlogByYear(Integer year);
 
 }

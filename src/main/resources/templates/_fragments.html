@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:fragment="head(title)">
+
+
     <meta charset="UTF-8">
     <!--首先完成移动端的预览设置问题,设备的宽度初始缩放倍数为1.0倍，这里还可以设置用户禁止缩放等等-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,8 +21,12 @@
     <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
     <!--目录的插件-->
     <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css" th:href="@{/lib/tocbot/tocbot.css}">
+
+
+
 </head>
 <body>
+
 
 <!--导航栏-->
 <nav th:fragment="menu(n)" class="ui   attached segment m-padded-tb-mini m-shadow-small animated fadeInDown">
@@ -37,9 +43,9 @@
             <a class="item m-item m-mobile-hide" th:href="@{/types/-1}" th:classappend="${n==2} ? 'active'"><i class="fas fa-ice-cream"></i>分类</a>
             <a class="item m-item m-mobile-hide" th:href="@{/tags/-1}" th:classappend="${n==3} ? 'active'"><i class="fas fa-candy-cane"></i>标签</a>
             <a class="item m-item m-mobile-hide" th:href="@{/archives}" th:classappend="${n==4} ? 'active'"><i class="fas fa-pizza-slice"></i>归档</a>
-            <a class="item m-item m-mobile-hide" th:href="@{/blog}" th:classappend="${n==5} ? 'active'"><i class="fas fa-cookie"></i>本站</a>
+            <a class="item m-item m-mobile-hide" th:href="@{/blog/22}" th:classappend="${n==5} ? 'active'"><i class="fas fa-cookie"></i>本站</a>
             <a class="item m-item m-mobile-hide" th:href="@{/friends}" th:classappend="${n==6} ? 'active'"><i class="fas fa-fish"></i>友链</a>
-            <a class="item m-item m-mobile-hide" th:href="@{/blog}"  th:classappend="${n==7} ? 'active'"><i class="fas fa-seedling"></i>关于我</a>
+            <a class="item m-item m-mobile-hide" th:href="@{/blog/23}"  th:classappend="${n==7} ? 'active'"><i class="fas fa-seedling"></i>关于我</a>
             <div class="right m-item item m-mobile-hide">
                 <div class="ui icon inverted  input">
                     <input type="text" placeholder="Search...">
@@ -99,7 +105,8 @@
         </div>
         <!--这里是一根线-->
         <div class="ui inverted section divider"> </div>
-        <p class="m-text-thin m-text-spaced m-opacity-mini">Copyright©2019-2020zzj Designed by zzj</p>
+        <p class="m-text-thin m-text-spaced m-opacity-mini">Copyright©2019-2020 zzj Designed by zzj</p>
+        <p class="m-text-thin m-text-spaced m-opacity-mini">蜀ICP备19012122号</p>
     </div>
 
 

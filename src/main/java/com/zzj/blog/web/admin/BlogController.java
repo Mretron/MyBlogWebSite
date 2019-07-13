@@ -2,6 +2,7 @@ package com.zzj.blog.web.admin;
 
 import com.zzj.blog.pojo.Blog;
 import com.zzj.blog.pojo.BlogQuery;
+import com.zzj.blog.pojo.Type;
 import com.zzj.blog.pojo.User;
 import com.zzj.blog.service.BlogService;
 import com.zzj.blog.service.CommentService;
@@ -20,7 +21,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
-
 
 @Controller
 @RequestMapping("/admin")
@@ -107,6 +107,8 @@ public class BlogController {
         return "redirect:/admin/blogs";
 
     }
+
+
 
 
 

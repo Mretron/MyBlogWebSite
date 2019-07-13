@@ -13,9 +13,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!--动画效果的插件-->
     <link rel="stylesheet" href="../static/css/animate.css">
+
 </head>
 <body>
-<!--侧边留言板-->
+
+<!--左侧边留言板-->
 <div class="ui left sidebar inverted vertical menu">
 
     <form method="post" th:action="@{/messages}" class="ui inverted center aligned form">
@@ -44,10 +46,35 @@
     </div>
 
 </div>
+<!--右侧边音乐盒-->
+<div class="ui right sidebar inverted vertical menu">
+    <audio id="audio" name="audio" autoplay="autoplay"   controls="controls" loop="loop"  preload="auto" src="一生中最爱.mp3" th:src="@{/music/一生中最爱.mp3}"></audio>
+
+    <a class="music-1" href="#">
+        <div class="header item m-text-spaced m-padded-tb-big ">
+            <span>1.Avril Lavigne-Innocence</span>
+        </div>
+    </a>
+    <a class="music-2" href="#">
+        <div class="header item m-text-spaced m-padded-tb-big ">
+            <span>2.Taylor Swift-Red</span>
+        </div>
+    </a>
+
+    <a class="music-3" href="#">
+        <div class="header item m-text-spaced m-padded-tb-big ">
+            <span>3.ZAYN/Taylor Swift-I Don't Wanna Live Forever</span>
+        </div>
+    </a>
+    <a class="music-4" href="#">
+        <div class="header item m-text-spaced m-padded-tb-big ">
+            <span>4.谭咏麟-一生中最爱</span>
+        </div>
+    </a>
+</div>
+
 <!--主体-->
 <div class="pusher">
-
-
     <!--导航栏-->
     <nav th:replace="_fragments :: menu(1)"  class="ui   attached segment m-padded-tb-mini m-shadow-small animated fadeInDown">
 
@@ -81,7 +108,6 @@
         </a>
 
     </nav>
-
     <!--中部主体-->
     <div class=" m-padded-tb-large" >
 
@@ -100,7 +126,7 @@
                                     </div>
                                     <div th:each="message : ${messages}"   class="ui  side  ">
                                         <div class="m-text-spaced">
-                                            <span th:text="${message.content}">They always need to have things to explained.</span>
+                                            <span th:text="${#strings.abbreviate(message.content,30)}">They always need to have things to explained.</span>
                                             ——————by&nbsp;&nbsp;&nbsp;&nbsp;<span th:text="${message.nickname}">The Little Prince</span>
                                         </div>
                                     </div>
@@ -112,7 +138,8 @@
 
 
                 <div class="two wide center aligned column m-padded-tb-this">
-                    <button id="sidebar-btn" class="ui  teal button" >留言板</button>
+                    <button id="sidebar-btn" class="ui mini  teal button" >留言板</button>
+                    <button id="music-btn" class="ui mini orange button">音乐盒</button>
                 </div>
 
             </div>
@@ -131,9 +158,9 @@
                         <div class="content">
                             <a class="header" href="#aboutme">曾中杰</a>
                             <div class="meta">
-                                <a>Java程序员、生活梦想家</a>
+                                <a style="">Java程序员、生活梦想家</a>
                             </div>
-                            <div class=" description m-padded" style="font-family: 楷体">
+                            <div class=" description m-padded" style="font-family: 楷体;font-weight: 800 ;!important;">
                                 唯有你也想见我，<br>
                                 我们的见面才有意义。
                             </div>
@@ -209,6 +236,45 @@
                     </div>
                     <br><br>
                     <div class="ui  section divider"></div>
+
+                    <!--最新评论-->
+                    <div id="comment-container" class="ui stackable raised segments ">
+                        <div th:fragment="commentList">
+                            <div class="ui segment">
+                            <div class="ui two column grid">
+                                <div class="column">
+                                    <i class="fas fa-cat"></i>  最新评论
+                                </div>
+                                <div class="right aligned column">
+                                    <a href="#" >->想唠两句？</a>
+                                </div>
+                            </div>
+                        </div>
+                            <div th:each="comment : ${commentsPage.content}" class="ui vertical stackable segment ">
+                                <div class="ui stackable grid m-padded-big">
+                                    <div class="ui row m-padded-tb-mini">
+                                            <a href="#" th:text="${comment.blog.title}" th:href="@{/blog/{id}(id=${comment.blog.id})}" >
+                                                2019春招-字节跳动面试</a>
+                                    </div>
+                                    <div class="ui row m-padded-tb-mini-two " style="color: gray!important;">
+                                        <div class="ui grey color"><span th:text="${comment.nickname}">大人</span>：<span th:text="${#strings.abbreviate(comment.content,12)}">为什么要对一只帽子感到</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui attached segment" th:if="${commentsPage.totalPages}>1">
+                                <div class="ui two column grid">
+                                    <div class=" column">
+                                        <button id="comment-last"  th:unless="${commentsPage.first}" onclick="commentsPageUp()"   class="ui grey basic button">上一页</button>
+                                    </div>
+                                    <div class="ui right aligned column">
+                                        <button id="comment-next" th:unless="${commentsPage.last}" onclick="commentsPageDown()"  class="ui grey basic button">下一页</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui  section divider"></div>
                     <div class="ui left aligned header">
                         待添加...
                     </div>
@@ -252,7 +318,7 @@
 
 
                     <!--这里是一根分割线-->
-                    <div class="ui horizontal divider m-margin m-text">最新博客</div>
+                    <div class="ui horizontal divider m-margin " style="font-family:楷体;font-size: 20px; font-weight: 600;!important;">最新博客</div>
 
 
 
@@ -263,9 +329,10 @@
                             <div class="ui eleven wide column">
 
                                 <h3 class="ui  header m-padded-tb-up"  ><a th:text="${blog.title}" th:href="@{/blog/{id}(id=${blog.id})}" href="#" target="_blank" style="font-family:宋体;color: black !important;">属于我的小王子</a></h3>
-                                <p th:text="${blog.description}" class="m-padded-tb-bottom " style="font-size: 15px; font-weight: 500 !important;letter-spacing: 1px !important;line-height: 2.5;font-family: 仿宋;" >
+                                <a href="#" target="_blank" th:href="@{/blog/{id}(id=${blog.id})}" class="ui header">
+                                <p th:text="${blog.description}" class="  " style="font-size: 15px; font-weight: 500 !important;letter-spacing: 1px !important;line-height: 2.5;" >
                                     有多少人能够反复读一本书呢？年少之秋和为人父的年龄去读小王子，其中的体会也许各有千秋吧。那在我十九岁的时空中，我的朋友小王子又教给了我什么？那在我十九岁的时空中，我的朋友小王子又教给了我什么？那在我十九岁的时空中，我的朋友小王子又教给了我什么？
-                                </p>
+                                </p><font style="font-size: 14px;!important;"><u><i>点击详情>></i></u></font></a>
                                 <div class="ui divider "></div>
                                 <div class="ui middle aligned grid">
                                     <div class="six wide column">
@@ -333,7 +400,6 @@
                     <div class="m-text-a ui horizontal divider ">my Voice</div>
 
                         <div style="font-size:18px;font-weight:500;font-family: 楷体!important;">
-
                             <p class="ui left aligned ">长到这么大，</p>
                             <p class="content ">我说不出來我最爱的一部电影，</p>
                             <p class="">说不出來我最爱的一首歌，</p>
@@ -372,7 +438,7 @@
 
                     <!--标签-->
                     <div class="ui raised segments m-margin">
-                        <div class="ui    segment">
+                        <div class="ui  segment">
                             <div class="ui two column grid">
                                 <div class="column">
                                     <i class="fas fa-dove"></i>标签
@@ -383,11 +449,10 @@
                             </div>
                         </div>
                         <div class="ui teal segment">
-
-                                <a th:each="tag : ${tags}" th:href="@{/tags/{id}(id=${tag.id})}" href="#" target="_blank" class="ui teal basic left pointing label m-margin-tiny">
+                             <a th:each="tag : ${tags}" th:href="@{/tags/{id}(id=${tag.id})}" href="#" target="_blank" class="ui teal basic left pointing label m-margin-tiny">
                                     <span th:text="${tag.name}">方法论</span>
                                     <div th:text="${#arrays.length(tag.blogs)}" class="detail">23</div>
-                                </a>
+                             </a>
                         </div>
                     </div>
 
@@ -407,6 +472,9 @@
                                 <div class="item m-padded-tb"><i class="tags icon"></i>标签:<span th:text="${tagsCount}">56</span>个</div>
                                 <div class="item m-padded-tb"><i class="comments outline icon"></i>评论总数:<span th:text="${commentsCount}">56</span>条</div>
                                 <div class="item m-padded-tb"><i class="paper plane icon"></i>建站时长:<span id="recordTime"></span></div>
+                                <div class="item m-padded-tb"><i class="chart bar outline icon"></i>本站总访问量:<span th:text="${views}"></span></div>
+                                <div class="item m-padded-tb"><i class="address card icon"></i>本站总访问人数:<span th:text="${visitorsCount}"></span></div>
+                                <div class="item m-padded-tb"><i class="address card outline icon"></i>您是第<span th:text="${numOfYou}"></span>位访客</div>
                             </div>
                         </div>
                     </div>
@@ -482,9 +550,26 @@
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
 </th:block>
 
+
 <script>
+    var audio = document.getElementsByTagName('audio')[0];
 
-
+    $('.music-1').click(function () {
+        audio.src="/music/Innocence.mp3";
+        audio.play();
+    });
+    $('.music-2').click(function () {
+        audio.src="/music/Red.mp3";
+        audio.play();
+    });
+    $('.music-3').click(function () {
+        audio.src="/music/I Don't Wanna Live Forever.mp3";
+        audio.play();
+    });
+    $('.music-4').click(function () {
+        audio.src="/music/一生中最爱.mp3";
+        audio.play();
+    });
 
 
     $('.menu.toggle').click(function () {
@@ -497,10 +582,16 @@
     }
 
     $('#sidebar-btn').click(function () {
-        $('.ui.sidebar')
+        $('.ui.left.sidebar')
             .sidebar('toggle')
         ;
 
+    });
+
+    $('#music-btn').click(function () {
+        $('.ui.right.sidebar')
+            .sidebar('toggle')
+        ;
     });
 
 
@@ -513,7 +604,6 @@
     function time(){
         var nowTime =new Date();
         var startTime=new Date(2019,3,2,17,52,0);
-
         var xc=(nowTime.getTime()-startTime.getTime())/1000;
         var day=parseInt(xc/86400);
         xc-=day*86400;
@@ -524,11 +614,12 @@
         hour=guolv(hour);
         min=guolv(min);
         sec=guolv(sec);
-        var str=day+'天'+hour+'小时'+min+'分'+sec+'秒';
+        var str=day+'天'+hour+'小时'+min+'分'+sec;
         $("#recordTime").html(str);
     }
     setInterval(time,1000);
     setInterval(shapeChange,4000);
+
 
 
 
@@ -562,6 +653,22 @@
 
         }
     })
+
+    var commentsPages = 0;
+    function commentsPageUp(){
+        var Lastpage = commentsPages-1;
+        commentsPages--;
+        $("#comment-container").load("/comments/commentsPage/?page="+Lastpage);
+    }
+
+    function commentsPageDown(){
+        var Nextpage = commentsPages+1;
+        commentsPages++;
+        $("#comment-container").load("/comments/commentsPage/?page="+Nextpage);
+    }
+
+
+
 
 </script>
 </body>

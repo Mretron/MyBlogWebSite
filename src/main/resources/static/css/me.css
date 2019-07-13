@@ -7,6 +7,24 @@
     padding-left: 1% !important;
     padding-right: 1% !important;
 }
+.m-padded-text{
+    padding-left: 1em !important;
+    padding-right: 1em !important;
+
+}
+.m-padded-big{
+    padding-top: 1em !important;
+    padding-right: 2em !important;
+    padding-bottom: 1em !important;
+    padding-left: 2em !important;
+}
+.m-padded-left{
+    padding-top: 2em !important;
+    padding-right: 2em !important;
+    padding-bottom: 0em !important;
+    padding-left: 0em !important;
+}
+
 .m-padded-lr-small{
     padding-left: 3% !important;
     padding-right: 3% !important;
@@ -31,6 +49,10 @@
 .m-padded-tb-mini{
     padding-top: 0.2em !important;
     padding-bottom: 0.2em !important;
+}
+.m-padded-tb-mini-two{
+    padding-top: 0.4em !important;
+    padding-bottom: 0.1em !important;
 }
 .m-padded-tb-this{
     padding-top: 0.3em !important;
@@ -130,6 +152,12 @@
     width: 90% !important;
     display: block!important;
 }
+
+.m-container-eight{
+
+    width: 80% !important;
+    display: block!important;
+}
 /*------margin-------*/
 .m-margin-small{
     margin-top: 20px !important;
@@ -143,7 +171,9 @@
     margin-top: 50px !important;
     margin-bottom: 50px !important; ;
 }
-
+.m-margin-message{
+    margin-top: 8px !important;
+}
 .m-margin-tiny{
     margin-top: 0.8em !important;
     margin-bottom: 0.3em !important; ;
@@ -158,6 +188,11 @@
 }
 .m-margin-bottom-small{
     margin-bottom:0.5em !important
+}
+
+/*-------color------*/
+.m-teal{
+    color:#00B5AD !important;
 }
 
 /*------------position-----------*/
@@ -219,3 +254,7 @@ body{
     background: url("/images/leaves.png");
 }
 
+
+.m-font-size{
+    font-size: 3px !important;
+}

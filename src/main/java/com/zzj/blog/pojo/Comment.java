@@ -12,13 +12,9 @@ public class Comment {
     @Id
     @GeneratedValue
     private Long id;
-
     private String nickname;
-
     private String email;
-
     private String content;
-
     private String avatar; //评论者的头像
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -32,6 +28,17 @@ public class Comment {
 
     @OneToMany(mappedBy = "parentComment")
     private List<Comment> replyComments = new ArrayList<>();
+
+    //判断是否是博主的回复
+    private boolean adminComment;
+
+    public boolean isAdminComment() {
+        return adminComment;
+    }
+
+    public void setAdminComment(boolean adminComment) {
+        this.adminComment = adminComment;
+    }
 
     @Override
     public String toString() {

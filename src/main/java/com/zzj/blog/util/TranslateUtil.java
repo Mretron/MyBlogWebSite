@@ -1,5 +1,6 @@
 package com.zzj.blog.util;
 
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.select.Elements;
 import org.jsoup.nodes.Document;
@@ -12,12 +13,17 @@ import java.net.URL;
 
 public class TranslateUtil {
 
+    public static String USER_AGENT = "User-Agent";
+    public static String USER_AGENT_VALUE = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0";
+
     private static String preUrl = "http://www.baidu.com/s?wd=";
 
     public static String translate(String word){
 
+        //拼接URL
+        String newUrl = preUrl+word;
         //获取源代码
-        String code = getContent(word);
+        String code = getContent(newUrl,"utf-8");
         //System.out.println(code);
         //页面一定是一个document对象
         //创建Document对象
@@ -37,36 +43,20 @@ public class TranslateUtil {
 
     /**
      * 获取相应的源代码
-     * @param word
+     * @param newUrl
      * @return
      */
-    public static String getContent(String word){
-        //拼接处网址
-        String newUrl = preUrl + word;
-        //将网址字符串 当成网址来处理
-        StringBuffer content = new StringBuffer();
+    public static String getContent(String newUrl,String charsetName) {
+
         try {
-            //编译时异常
-            URL url = new URL(newUrl);
-            //建立连接
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            //获取输入流
-            BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(),"utf-8"));
-            //获取信息
-
-            //定义每次读取的信息
-            String temp = null;
-            while((temp = reader.readLine())!=null){
-                content.append(temp + "\n");
-            }
-
-
-
-        }catch (MalformedURLException e){
-            e.printStackTrace();
+            Connection con = Jsoup.connect(newUrl);
+            con.header(USER_AGENT, USER_AGENT_VALUE); //配置浏览器
+            Connection.Response rs = con.execute(); //获取响应
+            rs.charset(charsetName);
+            return rs.body();
         }catch (IOException e){
             e.printStackTrace();
         }
-        return content.toString();
-    }
+            return "";
+        }
 }

@@ -47,7 +47,7 @@
     <div class="ui attached pointing menu">
         <div class="ui container">
             <div class="right menu">
-                <a href="#" class=" item">发布</a>
+                <a href="/admin/fabutype" class=" item">发布</a>
                 <a href="#" class="active item">列表</a>
             </div>
         </div>
@@ -238,6 +238,7 @@
 
         function loaddata() {
             $("#table-container").load("/admin/blogs/search",{
+
                 title : $("[name='title']").val(),
                 typeId : $("[name='typeId']").val(),
                 recommend : $("[name='recommend']").prop('checked'),

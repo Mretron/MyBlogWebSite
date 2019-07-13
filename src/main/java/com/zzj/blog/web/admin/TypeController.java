@@ -19,7 +19,7 @@ public class TypeController {
     private TypeService typeService;
 
     @GetMapping("/types")
-    public String types(@PageableDefault(size = 3,sort = {"id"},direction = Sort.Direction.DESC)
+    public String types(@PageableDefault(size = 10,sort = {"id"},direction = Sort.Direction.DESC)
                         Pageable pageable, Model model){
 
         model.addAttribute("page",typeService.listType(pageable));
@@ -35,7 +35,7 @@ public class TypeController {
         return "admin/types-input";
     }
 
-    @PostMapping("/types")
+    @RequestMapping("/types")
     public String post(Type type, RedirectAttributes attributes){
 
         Type type1 = typeService.getTypeByName(type.getName());

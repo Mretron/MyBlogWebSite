@@ -31,8 +31,6 @@ public class LoginController {
                         HttpSession session,
                         RedirectAttributes attributes){
 
-
-
         User user = userService.checkUser(username,password);
         if(user != null){
 

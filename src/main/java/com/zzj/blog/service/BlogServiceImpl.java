@@ -101,6 +101,7 @@ public class BlogServiceImpl implements BlogService {
     @Transactional
     @Override
     public Page<Blog> listBlog(Pageable pageable) {
+
         return blogRepository.findAll(pageable);
     }
 
@@ -136,12 +137,22 @@ public class BlogServiceImpl implements BlogService {
     @Transactional
     @Override
     public Map<String, List<Blog>> archiveBlog() {
-
         List<String> years = blogRepository.findGroupYear();
         Map<String,List<Blog>> map = new HashMap<>();
-
         for(String year : years){
             map.put(year,blogRepository.findByYear(year));
+        }
+        return map;
+    }
+
+    public Map<String,List<Blog>> archiveBlogByYear(Integer year){
+
+        List<Blog> blogs = archiveBlog().get(year);//根据年得到的所有博客
+        Map<String,List<Blog>> map = new HashMap<>();
+
+        for(int i=1;i<=12;i++){
+
+            map.put(i+"",blogRepository.findByYearAndMonth(year,i));
         }
         return map;
     }
